@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3001', 'http://localhost:3002', 'http://localhost:3003', 'http://127.0.0.1:3001', 'http://127.0.0.1:3002'],
+  origin: ['http://localhost:3001', 'http://localhost:3002', 'http://localhost:3003', 'http://localhost:5173', 'http://127.0.0.1:3001', 'http://127.0.0.1:3002', 'http://127.0.0.1:5173'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
@@ -291,7 +291,7 @@ app.post('/api/predict/predict', upload.single('image'), async (req, res) => {
     console.log('✅ Valid image detected, returning prediction result');
     res.json({
       success: true,
-      result: {
+      prediction: {
         plant: {
           name: parsedResult.disease,  // Disease name as main identifier
           scientificName: null,
