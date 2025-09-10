@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Upload Final</title>
+</head>
+<body>
+    <h1>Test Plant Disease Classification - Final</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="imageFile" accept="image/*" required>
+        <button type="submit">Upload and Predict</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const fileInput = document.getElementById('imageFile');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert('Please select an image file');
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('image', file);
+            
+            try {
+                console.log('Uploading file:', file.name);
+                const response = await fetch('http://localhost:3000/api/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                console.log('Response:', result);
+                
+                document.getElementById('result').innerHTML = `
+                    <h2>Result:</h2>
+                    <pre>${JSON.stringify(result, null, 2)}</pre>
+                `;
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = `
+                    <h2>Error:</h2>
+                    <p>${error.message}</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
