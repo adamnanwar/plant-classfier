@@ -47,7 +47,7 @@ class PredictionController {
 
       // Find plant data from database
       const plant = await Plant.findOne({ 
-        where: { modelClassId: prediction.classId } 
+        where: { model_class_id: prediction.classId } 
       });
 
       if (!plant) {

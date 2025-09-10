@@ -244,7 +244,7 @@ async function seedPlantData() {
           prevention: data.prevention,
           severity: data.severity,
           imageUrl: data.imageUrl,
-          modelClassId: parseInt(modelClassId),
+          model_class_id: parseInt(modelClassId),
           isActive: true
         });
       }
@@ -275,7 +275,7 @@ async function updatePlantDataFromModel() {
     
     for (const [classId, className] of Object.entries(modelClasses)) {
       const existingPlant = await Plant.findOne({ 
-        where: { modelClassId: parseInt(classId) } 
+        where: { model_class_id: parseInt(classId) } 
       });
       
       if (!existingPlant && plantDiseaseData[classId]) {
@@ -289,7 +289,7 @@ async function updatePlantDataFromModel() {
           prevention: data.prevention,
           severity: data.severity,
           imageUrl: data.imageUrl,
-          modelClassId: parseInt(classId),
+          model_class_id: parseInt(classId),
           isActive: true
         });
         

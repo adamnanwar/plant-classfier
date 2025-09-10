@@ -41,6 +41,11 @@ const Plant = sequelize.define('Plant', {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
     comment: 'Status aktif untuk klasifikasi'
+  },
+  model_class_id: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    comment: 'ID kelas dari model ML (0-16)'
   }
 }, {
   tableName: 'plants',

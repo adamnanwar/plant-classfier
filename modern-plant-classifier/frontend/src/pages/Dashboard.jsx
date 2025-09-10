@@ -27,8 +27,8 @@ const Dashboard = () => {
       
       // Fetch stats and recent predictions in parallel
       const [statsResponse, recentResponse] = await Promise.all([
-        fetch('http://localhost:3001/api/dashboard/stats'),
-        fetch('http://localhost:3001/api/dashboard/recent-predictions?limit=10')
+        fetch('http://localhost:3000/api/dashboard/stats'),
+        fetch('http://localhost:3000/api/dashboard/recent-predictions?limit=10')
       ]);
       
       if (statsResponse.ok) {
