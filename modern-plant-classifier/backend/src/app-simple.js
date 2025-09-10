@@ -162,7 +162,7 @@ app.post('/api/auth/login', async (req, res) => {
   }
 });
 
-// Prediction endpoint (main route)
+ // Prediction endpoint (main route)
 app.post('/api/predict', upload.single('image'), async (req, res) => {
   // Forward to the main prediction handler
   return handlePrediction(req, res);
