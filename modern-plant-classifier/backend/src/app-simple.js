@@ -162,8 +162,20 @@ app.post('/api/auth/login', async (req, res) => {
   }
 });
 
-// Prediction endpoint
+// Prediction endpoint (main route)
+app.post('/api/predict', upload.single('image'), async (req, res) => {
+  // Forward to the main prediction handler
+  return handlePrediction(req, res);
+});
+
+// Prediction endpoint (alternative route)
 app.post('/api/predict/predict', upload.single('image'), async (req, res) => {
+  // Forward to the main prediction handler
+  return handlePrediction(req, res);
+});
+
+// Main prediction handler function
+async function handlePrediction(req, res) {
   try {
     if (!req.file) {
       return res.status(400).json({ 
@@ -334,7 +346,7 @@ app.post('/api/predict/predict', upload.single('image'), async (req, res) => {
       details: error.message
     });
   }
-});
+}
 
 // Error handling middleware
 app.use((error, req, res, next) => {
