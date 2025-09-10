@@ -58,8 +58,8 @@ export const apiService = {
 
   // Prediction endpoints
   predict: (formData) => {
-    console.log('🚀 Making prediction request to:', api.defaults.baseURL + '/predict');
-    return api.post('/predict', formData, {
+    console.log('🚀 Making prediction request to:', api.defaults.baseURL + '/predict/predict');
+    return api.post('/predict/predict', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
