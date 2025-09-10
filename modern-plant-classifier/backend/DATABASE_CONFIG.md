@@ -62,3 +62,4 @@ Database SQLite tersimpan di file: `D:\Projects\ML-yudha\modern-plant-classifier
 
 Untuk backup database SQLite, cukup copy file `database.sqlite` ke lokasi aman.
 
+

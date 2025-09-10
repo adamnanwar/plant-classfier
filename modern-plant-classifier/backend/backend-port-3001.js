@@ -326,3 +326,4 @@ app.listen(PORT, () => {
   console.log(`💡 Note: Backend running on port ${PORT}, frontend should run on port 3000`);
 });
 
+
